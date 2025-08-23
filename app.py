@@ -3,6 +3,7 @@
 # ==============================
 
 import os
+os.environ["PAFY_BACKEND"] = "internal"  # force yt-dlp backend
 import io
 import base64
 import random
@@ -34,7 +35,7 @@ from pdfminer.converter import TextConverter
 # --- YouTube helper (pafy fork + yt-dlp) ---
 import pafy
 import yt_dlp
-os.environ["PAFY_BACKEND"] = "internal"  # force yt-dlp backend
+
 pafy.set_backend("internal")
 
 # --- Streamlit components & libs ---
