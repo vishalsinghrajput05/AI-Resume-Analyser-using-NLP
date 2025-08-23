@@ -34,7 +34,8 @@ from pdfminer.converter import TextConverter
 
 # --- YouTube helper (pafy fork + yt-dlp) ---
 import pafy
-import yt_dlp
+import yt_dlp as youtube_dl
+
 
 pafy.set_backend("internal")
 
