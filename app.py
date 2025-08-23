@@ -30,6 +30,7 @@ from pdfminer.converter import TextConverter
 import io
 import pafy
 import yt_dlp
+pafy.set_backend("internal")
 
 from streamlit_tags import st_tags
 from PIL import Image
