@@ -34,7 +34,8 @@ from pdfminer.converter import TextConverter
 # --- YouTube helper (pafy fork + yt-dlp) ---
 import pafy
 import yt_dlp
-os.environ["PAFY_BACKEND"] = "internal"   # force yt-dlp backend
+os.environ["PAFY_BACKEND"] = "internal"  # force yt-dlp backend
+pafy.set_backend("internal")
 
 # --- Streamlit components & libs ---
 from streamlit_tags import st_tags
