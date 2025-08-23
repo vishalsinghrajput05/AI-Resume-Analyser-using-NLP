@@ -3,7 +3,27 @@
 # ==============================
 
 import os
-os.environ["PAFY_BACKEND"] = "internal"  # force yt-dlp backend
+import sys
+import subprocess
+
+# --- Bootstrap tricky dependencies ---
+def install_packages():
+    packages = [
+        "git+https://github.com/clipdalle/pafy_2023.git#egg=pafy",
+        "https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.3.1/en_core_web_sm-2.3.1.tar.gz"
+    ]
+    for pkg in packages:
+        try:
+            subprocess.check_call([sys.executable, "-m", "pip", "install", pkg])
+        except Exception as e:
+            print(f"⚠️ Could not install {pkg}: {e}")
+
+install_packages()
+
+# --- Ensure pafy uses yt-dlp backend ---
+os.environ["PAFY_BACKEND"] = "internal"
+
+# --- Core imports ---
 import io
 import base64
 import random
@@ -35,8 +55,6 @@ from pdfminer.converter import TextConverter
 # --- YouTube helper (pafy fork + yt-dlp) ---
 import pafy
 import yt_dlp as youtube_dl
-
-
 pafy.set_backend("internal")
 
 # --- Streamlit components & libs ---
@@ -201,10 +219,6 @@ def run():
                         value=skills_list,
                         key='skills_current')
 
-                # --- Field prediction (rules) ---
-                # (kept as in your version)
-                # ... same keyword checks & course recommendation code ...
-
                 # Insert into DB
                 ts = time.time()
                 timestamp = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d_%H:%M:%S')
@@ -241,5 +255,3 @@ def run():
 
 if __name__ == "__main__":
     run()
-
-
