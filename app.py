@@ -3,6 +3,8 @@
 # ==============================
 
 import os
+os.environ["PAFY_BACKEND"] = "internal"
+
 import sys
 import subprocess
 
