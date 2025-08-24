@@ -1,10 +1,11 @@
-streamlit==1.30.0
+pdfminer3
+pyresparser
+streamlit
 pandas
-nltk
-pdfminer.six
-pillow
+pafy
 plotly
+pymysql
 streamlit-tags
+Pillow
 yt_dlp
-spacy==2.3.5
-en-core-web-sm==2.3.1
+
