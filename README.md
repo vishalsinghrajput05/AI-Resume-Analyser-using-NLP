@@ -63,7 +63,25 @@ Allows recruiters/admins to track usage and understand the skill distribution of
 Can be extended into a career counseling or recruitment platform.
 
 
-#Output
+# Output
 
+## Project Screenshots
 
+<img width="1913" height="862" alt="Screenshot 2025-08-22 190534" src="https://github.com/user-attachments/assets/d845befc-ee98-4d08-9416-564455b7c671" />
+
+<img width="1917" height="858" alt="Screenshot 2025-08-24 194901" src="https://github.com/user-attachments/assets/b4fecd3b-dd26-435e-866a-4bd617686804" />
+
+<img width="1914" height="861" alt="Screenshot 2025-08-24 194938" src="https://github.com/user-attachments/assets/52eedb59-0763-47c2-ac82-bb6a9ab0f666" />
+
+<img width="1914" height="860" alt="Screenshot 2025-08-24 195011" src="https://github.com/user-attachments/assets/484b6706-199f-4763-ae9b-85273028246d" />
+
+<img width="1919" height="862" alt="Screenshot 2025-08-24 195101" src="https://github.com/user-attachments/assets/e0a871a7-8f54-4a72-ad9d-1e87b654ac8e" />
+
+<img width="1915" height="858" alt="Screenshot 2025-08-24 195302" src="https://github.com/user-attachments/assets/b5497b58-1ea0-43c8-8fc8-736715586af2" />
+
+<img width="1915" height="859" alt="Screenshot 2025-08-24 195456" src="https://github.com/user-attachments/assets/203b5ae0-601a-4d80-b90e-98ff0376df10" />
+
+<img width="1916" height="857" alt="Screenshot 2025-08-24 195529" src="https://github.com/user-attachments/assets/9a2d22ab-0c06-432c-bdc4-67b68a453492" />
+
+<img width="1918" height="862" alt="Screenshot 2025-08-24 195559" src="https://github.com/user-attachments/assets/8bb0319d-8476-468b-ac87-67111e15c413" />
 
