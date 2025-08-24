@@ -61,3 +61,9 @@ Provides personalized suggestions to make resumes more industry-ready.
 Allows recruiters/admins to track usage and understand the skill distribution of applicants.
 
 Can be extended into a career counseling or recruitment platform.
+
+
+#Output
+
+
+
