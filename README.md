@@ -67,6 +67,8 @@ Can be extended into a career counseling or recruitment platform.
 
 ## Project Screenshots
 
+### User Section
+
 <img width="1913" height="862" alt="Screenshot 2025-08-22 190534" src="https://github.com/user-attachments/assets/d845befc-ee98-4d08-9416-564455b7c671" />
 
 <img width="1917" height="858" alt="Screenshot 2025-08-24 194901" src="https://github.com/user-attachments/assets/b4fecd3b-dd26-435e-866a-4bd617686804" />
@@ -76,6 +78,8 @@ Can be extended into a career counseling or recruitment platform.
 <img width="1914" height="860" alt="Screenshot 2025-08-24 195011" src="https://github.com/user-attachments/assets/484b6706-199f-4763-ae9b-85273028246d" />
 
 <img width="1919" height="862" alt="Screenshot 2025-08-24 195101" src="https://github.com/user-attachments/assets/e0a871a7-8f54-4a72-ad9d-1e87b654ac8e" />
+
+### Admin section
 
 <img width="1915" height="858" alt="Screenshot 2025-08-24 195302" src="https://github.com/user-attachments/assets/b5497b58-1ea0-43c8-8fc8-736715586af2" />
 
