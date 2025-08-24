@@ -1,12 +1,12 @@
-AI Resume Analyser
+# AI Resume Analyser
 
-Project Overview:
+## Project Overview:
 
 The AI Resume Analyser is a Streamlit-based web application built using Python and Natural Language Processing (NLP) that helps users evaluate their resumes and receive smart, actionable recommendations to improve them. The system provides personalized insights into resume content, highlighting strengths, weaknesses, and areas of improvement. It is designed to be user-friendly for job seekers while also featuring an admin module for tracking application usage and analyzing visitor data.
 
-Key Features:
+## Key Features:
 
-User Module:
+### User Module:
 
 Resume Upload: Users can upload their resumes in PDF/DOCX format.
 
@@ -18,7 +18,7 @@ Resume Insights: Generates a structured summary of the uploaded resume, highligh
 
 Experience Categorization: Classifies users into categories like Beginner, Intermediate, or Advanced based on their work experience and skill sets.
 
-Admin Module:
+### Admin Module:
 
 Visitor Tracking: Admin can view a list of all users who have accessed the application.
 
@@ -28,7 +28,7 @@ Data Visualization: Interactive Pie Chart showing the distribution of visitors (
 
 Usage Insights: Helps admin understand the type of audience using the platform.
 
-Tech Stack:
+## Tech Stack:
 
 Frontend: Streamlit (for UI and user interaction)
 
@@ -40,7 +40,7 @@ Database: SQLite / MongoDB (for storing user and admin data)
 
 Visualization: Matplotlib / Plotly / Streamlit Charts (for pie chart representation)
 
-Workflow:
+## Workflow:
 
 1. User uploads their resume.
 
@@ -52,7 +52,7 @@ Workflow:
 
 5. Admin can monitor visitors, view uploaded resumes, and analyze statistics through charts.
 
-Impact & Use Cases:
+## Impact & Use Cases:
 
 Helps job seekers identify gaps in their resumes and improve them before applying.
 
