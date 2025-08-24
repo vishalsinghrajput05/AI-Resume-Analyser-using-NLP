@@ -7,5 +7,5 @@ plotly
 pymysql
 streamlit-tags
 Pillow
-yt_dlp
+yt_dlp 
 
