@@ -2,6 +2,11 @@ import streamlit as st
 import pandas as pd
 import base64,random
 import time,datetime
+import nltk
+
+# ✅ Download NLTK data before importing pyresparser
+nltk.download('stopwords')
+nltk.download('punkt')
 from pyresparser import ResumeParser
 from pdfminer.layout import LAParams, LTTextBox
 from pdfminer.pdfpage import PDFPage
@@ -17,8 +22,6 @@ from PIL import Image
 import pymysql
 from Courses import ds_course,web_course,android_course,ios_course,uiux_course,resume_videos,interview_videos
 import plotly.express as px
-import nltk
-nltk.download('stopwords')
 
 # ---- Helper Functions ----
 
