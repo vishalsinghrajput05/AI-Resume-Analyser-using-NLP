@@ -3,10 +3,12 @@ import pandas as pd
 import base64,random
 import time,datetime
 import nltk
-
-# ✅ Download NLTK data before importing pyresparser
-nltk.download('stopwords')
 nltk.download('punkt')
+nltk.download('averaged_perceptron_tagger')
+nltk.download('maxent_ne_chunker')
+nltk.download('words')
+nltk.download('stopwords')  # <- The missing one
+
 from pyresparser import ResumeParser
 from pdfminer.layout import LAParams, LTTextBox
 from pdfminer.pdfpage import PDFPage
