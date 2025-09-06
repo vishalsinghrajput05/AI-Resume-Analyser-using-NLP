@@ -8,8 +8,6 @@ plotly
 pymysql
 streamlit-tags
 Pillow
-yt_dlp
-pafy
 pdfminer.six
 docx2txt
 numpy<2
