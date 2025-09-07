@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import base64, random, time, datetime, io
 import nltk
+import os
 
 # ---------------- NLTK Setup ----------------
 # Ensure stopwords and other resources are available before pyresparser is imported
@@ -93,8 +94,14 @@ def insert_data(name, email, res_score, timestamp, no_of_pages, reco_field, cand
 st.set_page_config(page_title="AI Resume Analyzer", page_icon='./Logo/logo2.png')
 
 def run():
-    img = Image.open("Logo/logo2.png")
-    st.image(img)
+    # ---------------- Safe Logo Load ----------------
+    logo_path = "Logo/logo2.png"
+    if os.path.exists(logo_path):
+        img = Image.open(logo_path)
+        st.image(img)
+    else:
+        st.warning("Logo image not found. Skipping display.")
+
     st.title("AI Resume Analyser")
     st.sidebar.markdown("# Choose User")
     activities = ["User", "Admin"]
@@ -102,7 +109,7 @@ def run():
     link = '[©Developed by Vishal Raj](https://www.linkedin.com/in/vishalraj99/)'
     st.sidebar.markdown(link, unsafe_allow_html=True)
 
-    # Create DB + Table if not exists
+    # ---------------- Create DB + Table if available ----------------
     if cursor:
         cursor.execute("""CREATE DATABASE IF NOT EXISTS CV;""")
         DB_table_name = 'user_data'
@@ -148,7 +155,7 @@ def run():
                 except:
                     pass
 
-                # Candidate Level
+                # ---------------- Candidate Level ----------------
                 cand_level = ''
                 pages = resume_data.get('no_of_pages', 1)
                 if pages == 1:
@@ -161,7 +168,7 @@ def run():
                     cand_level = "Experienced"
                     st.markdown('''<h4 style='text-align: left; color: #fba171;'>You are at experience level!''', unsafe_allow_html=True)
 
-                # Skills Recommendation
+                # ---------------- Skills Recommendation ----------------
                 keywords = st_tags(label='### Your Current Skills',
                                    text='See our skills recommendation below',
                                    value=resume_data.get('skills', []), key='1')
