@@ -268,6 +268,6 @@ else:
         else:
             st.error("Wrong ID & Password Provided")
 
-run()
+def run()
 
 
