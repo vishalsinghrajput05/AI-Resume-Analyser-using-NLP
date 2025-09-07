@@ -73,7 +73,7 @@ def course_recommender(course_list):
 
 # ---------------- Database Setup ----------------
 try:
-    connection = pymysql.connect(host='localhost', user='vishal', password='enter your password', db='cv')
+    connection = pymysql.connect(host='localhost', user='root', password='Vishal@99', db='cv')
     cursor = connection.cursor()
 except Exception as e:
     st.warning("⚠️ Database not available on Streamlit Cloud. Some features may not work.")
