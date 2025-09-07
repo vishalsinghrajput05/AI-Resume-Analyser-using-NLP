@@ -95,12 +95,14 @@ st.set_page_config(page_title="AI Resume Analyzer", page_icon='./Logo/logo2.png'
 
 def run():
     # ---------------- Safe Logo Load ----------------
-    logo_path = "Logo/logo2.png"
-    if os.path.exists(logo_path):
-        img = Image.open(logo_path)
-        st.image(img)
-    else:
-        st.warning("Logo image not found. Skipping display.")
+    logo_path = "Logo-20250819T070958Z-1-001/Logo/logo2.png"
+
+if os.path.exists(logo_path):
+    img = Image.open(logo_path)
+    st.image(img)
+else:
+    st.warning("Logo image not found. Skipping display.")
+
 
     st.title("AI Resume Analyser")
     st.sidebar.markdown("# Choose User")
