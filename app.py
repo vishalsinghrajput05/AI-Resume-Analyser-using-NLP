@@ -63,22 +63,32 @@ def course_recommender(course_list):
 
 # ---- Database Setup ----
 
-connection = pymysql.connect(host='localhost', user='vishal', password='enter your password', db='cv')
-cursor = connection.cursor()
+try:
+    connection = pymysql.connect(host='localhost', user='vishal', password='enter your password', db='cv')
+    cursor = connection.cursor()
+except Exception as e:
+    st.warning("⚠️ Database not available on Streamlit Cloud. Some features may not work.")
+    connection = None
+    cursor = None
+
 
 def insert_data(name, email, res_score, timestamp, no_of_pages, reco_field, cand_level, skills, recommended_skills, courses):
+    if not cursor:
+        # Skip database insert if DB not available
+        return
     DB_table_name = 'user_data'
     insert_sql = "insert into " + DB_table_name + """ values (0,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
     rec_values = (name, email, str(res_score), timestamp, str(no_of_pages), reco_field, cand_level, skills, recommended_skills, courses)
     cursor.execute(insert_sql, rec_values)
     connection.commit()
 
+
 # ---- Streamlit Setup ----
 
 st.set_page_config(page_title="AI Resume Analyzer", page_icon='./Logo/logo2.png')
 
 def run():
-    img = Image.open(r"C:\Users\vr288\OneDrive\Desktop\Automated Resume Screener using NLP\Logo-20250819T070958Z-1-001\Logo\logo2.png")
+    img = Image.open("Logo/logo2.png")
     st.image(img)
     st.title("AI Resume Analyser")
     st.sidebar.markdown("# Choose User")
