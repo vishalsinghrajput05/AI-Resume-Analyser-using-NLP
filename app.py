@@ -5,7 +5,6 @@ import nltk
 import os
 
 # ---------------- NLTK Setup ----------------
-# Ensure stopwords and other resources are available before pyresparser is imported
 nltk_resources = {
     'stopwords': 'corpora/stopwords',
     'punkt': 'tokenizers/punkt',
@@ -91,18 +90,16 @@ def insert_data(name, email, res_score, timestamp, no_of_pages, reco_field, cand
     connection.commit()
 
 # ---------------- Streamlit Setup ----------------
-st.set_page_config(page_title="AI Resume Analyzer", page_icon='./Logo/logo2.png')
+st.set_page_config(page_title="AI Resume Analyzer", page_icon='Logo-20250819T070958Z-1-001/Logo/logo2.png')
 
 def run():
     # ---------------- Safe Logo Load ----------------
     logo_path = "Logo-20250819T070958Z-1-001/Logo/logo2.png"
-
-if os.path.exists(logo_path):
-    img = Image.open(logo_path)
-    st.image(img)
-else:
-    st.warning("Logo image not found. Skipping display.")
-
+    if os.path.exists(logo_path):
+        img = Image.open(logo_path)
+        st.image(img)
+    else:
+        st.warning("Logo image not found. Skipping display.")
 
     st.title("AI Resume Analyser")
     st.sidebar.markdown("# Choose User")
