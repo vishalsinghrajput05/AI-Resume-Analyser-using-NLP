@@ -2,6 +2,24 @@ import streamlit as st
 import pandas as pd
 import base64, random, time, datetime, io
 import nltk
+
+# ---------------- NLTK Setup ----------------
+# Ensure stopwords and other resources are available before pyresparser is imported
+nltk_resources = {
+    'stopwords': 'corpora/stopwords',
+    'punkt': 'tokenizers/punkt',
+    'averaged_perceptron_tagger': 'taggers/averaged_perceptron_tagger',
+    'maxent_ne_chunker': 'chunkers/maxent_ne_chunker',
+    'words': 'corpora/words'
+}
+
+for resource_name, resource_path in nltk_resources.items():
+    try:
+        nltk.data.find(resource_path)
+    except LookupError:
+        nltk.download(resource_name)
+
+# ---------------- Other Imports ----------------
 from pyresparser import ResumeParser
 from pdfminer.layout import LAParams
 from pdfminer.pdfpage import PDFPage
@@ -13,15 +31,7 @@ import pymysql
 from Courses import ds_course, web_course, android_course, ios_course, uiux_course, resume_videos, interview_videos
 import plotly.express as px
 
-# ✅ Ensure NLTK resources are available (fixes LookupError on Streamlit Cloud)
-nltk.download('punkt')
-nltk.download('averaged_perceptron_tagger')
-nltk.download('maxent_ne_chunker')
-nltk.download('words')
-nltk.download('stopwords')
-
-# ---- Helper Functions ----
-
+# ---------------- Helper Functions ----------------
 def get_table_download_link(df, filename, text):
     csv = df.to_csv(index=False)
     b64 = base64.b64encode(csv.encode()).decode()
@@ -61,8 +71,7 @@ def course_recommender(course_list):
             break
     return rec_course
 
-# ---- Database Setup ----
-
+# ---------------- Database Setup ----------------
 try:
     connection = pymysql.connect(host='localhost', user='vishal', password='enter your password', db='cv')
     cursor = connection.cursor()
@@ -71,10 +80,8 @@ except Exception as e:
     connection = None
     cursor = None
 
-
 def insert_data(name, email, res_score, timestamp, no_of_pages, reco_field, cand_level, skills, recommended_skills, courses):
     if not cursor:
-        # Skip database insert if DB not available
         return
     DB_table_name = 'user_data'
     insert_sql = "insert into " + DB_table_name + """ values (0,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
@@ -82,9 +89,7 @@ def insert_data(name, email, res_score, timestamp, no_of_pages, reco_field, cand
     cursor.execute(insert_sql, rec_values)
     connection.commit()
 
-
-# ---- Streamlit Setup ----
-
+# ---------------- Streamlit Setup ----------------
 st.set_page_config(page_title="AI Resume Analyzer", page_icon='./Logo/logo2.png')
 
 def run():
@@ -98,26 +103,27 @@ def run():
     st.sidebar.markdown(link, unsafe_allow_html=True)
 
     # Create DB + Table if not exists
-    cursor.execute("""CREATE DATABASE IF NOT EXISTS CV;""")
-    DB_table_name = 'user_data'
-    cursor.execute(f"""
-        CREATE TABLE IF NOT EXISTS {DB_table_name}(
-            ID INT NOT NULL AUTO_INCREMENT,
-            Name varchar(500) NOT NULL,
-            Email_ID VARCHAR(500) NOT NULL,
-            resume_score VARCHAR(8) NOT NULL,
-            Timestamp VARCHAR(50) NOT NULL,
-            Page_no VARCHAR(5) NOT NULL,
-            Predicted_Field VARCHAR(500) NOT NULL,
-            User_level VARCHAR(500) NOT NULL,
-            Actual_skills TEXT NOT NULL,
-            Recommended_skills TEXT NOT NULL,
-            Recommended_courses TEXT NOT NULL,
-            PRIMARY KEY (ID)
-        );
-    """)
+    if cursor:
+        cursor.execute("""CREATE DATABASE IF NOT EXISTS CV;""")
+        DB_table_name = 'user_data'
+        cursor.execute(f"""
+            CREATE TABLE IF NOT EXISTS {DB_table_name}(
+                ID INT NOT NULL AUTO_INCREMENT,
+                Name varchar(500) NOT NULL,
+                Email_ID VARCHAR(500) NOT NULL,
+                resume_score VARCHAR(8) NOT NULL,
+                Timestamp VARCHAR(50) NOT NULL,
+                Page_no VARCHAR(5) NOT NULL,
+                Predicted_Field VARCHAR(500) NOT NULL,
+                User_level VARCHAR(500) NOT NULL,
+                Actual_skills TEXT NOT NULL,
+                Recommended_skills TEXT NOT NULL,
+                Recommended_courses TEXT NOT NULL,
+                PRIMARY KEY (ID)
+            );
+        """)
 
-    # ---- User Side ----
+    # ---------------- User Side ----------------
     if choice == 'User':
         st.markdown('''<h5 style='text-align: left; color: #021659;'> Upload your resume, and get smart recommendations</h5>''', unsafe_allow_html=True)
         pdf_file = st.file_uploader("Choose your Resume", type=["pdf"])
@@ -215,7 +221,7 @@ def run():
                               str(resume_data.get('no_of_pages',1)), reco_field, cand_level, str(resume_data.get('skills',[])),
                               str(recommended_skills), str(rec_course))
 
-                # Bonus Videos (no pafy needed)
+                # Bonus Videos
                 st.header("**Bonus Video for Resume Writing Tips💡**")
                 resume_vid = random.choice(resume_videos)
                 st.subheader("✅ Bonus Resume Writing Video")
@@ -226,7 +232,7 @@ def run():
                 st.subheader("✅ Bonus Interview Tips Video")
                 st.video(interview_vid)
 
-    # ---- Admin Side ----
+    # ---------------- Admin Side ----------------
     else:
         st.success('Welcome to Admin Side')
         ad_user = st.text_input("Username")
