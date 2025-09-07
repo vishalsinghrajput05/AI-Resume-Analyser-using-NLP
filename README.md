@@ -1,3 +1,6 @@
+[Check out the AI Resume Analyzer App](https://ai-resume-analyser-using-nlp.streamlit.app/)
+
+
 # AI Resume Analyser
 
 ## Project Overview:
