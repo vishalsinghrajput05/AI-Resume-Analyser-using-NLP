@@ -1,11 +1,10 @@
-import streamlit as st 
+import streamlit as st
 import pandas as pd
 import base64, random, time, datetime, io
 import nltk
 import os
 
 # ---------------- NLTK Setup ----------------
-# Ensure stopwords and other resources are available before pyresparser is imported
 nltk_resources = {
     'stopwords': 'corpora/stopwords',
     'punkt': 'tokenizers/punkt',
@@ -96,13 +95,11 @@ st.set_page_config(page_title="AI Resume Analyzer", page_icon='./Logo/logo2.png'
 def run():
     # ---------------- Safe Logo Load ----------------
     logo_path = "Logo-20250819T070958Z-1-001/Logo/logo2.png"
-
-if os.path.exists(logo_path):
-    img = Image.open(logo_path)
-    st.image(img)
-else:
-    st.warning("Logo image not found. Skipping display.")
-
+    if os.path.exists(logo_path):
+        img = Image.open(logo_path)
+        st.image(img)
+    else:
+        st.warning("Logo image not found. Skipping display.")
 
     st.title("AI Resume Analyser")
     st.sidebar.markdown("# Choose User")
